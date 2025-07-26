@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export interface NavData {
   logo: {
     src?: string;
@@ -13,4 +15,5 @@ export interface NavData {
 export interface NavItem {
   href: string;
   label: string;
+  icon?:LucideIcon;
 }

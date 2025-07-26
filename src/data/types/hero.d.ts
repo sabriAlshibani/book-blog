@@ -1,13 +1,17 @@
+import { LucideIcon } from "lucide-react";
+
 export interface HeroData {
   heading: string;
   highlight?: string;
   description: string;
-  button: {
-    label: string;
-    href: string;
-  };
-  image: {
-    src: string;
-    alt: string;
-  };
+  button: btnItem;
+  icons: IconItem[];
+}
+interface btnItem {
+  label?:string;
+  href?:string;
+}
+interface IconItem {
+  icon?:LucideIcon;
+  title?:string;
 }

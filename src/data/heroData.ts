@@ -1,18 +1,27 @@
+import { Paintbrush, Zap, Code } from "lucide-react";
 import { HeroData } from "./types/hero";
 
-const heroData: HeroData = {
-  heading: "Discover the World of Books",
-  highlight: "Books",
+export const heroData: HeroData = {
+  heading: "شفرة وهوية",
+  highlight: "البرمجة",
   description:
-    "Explore novels, articles, summaries, and quotes curated for every reader.",
+    "نقدم حلولاً متكاملة في تطوير مواقع الويب، تصميم الهويات البصرية، والسوشيال ميديا بأسعار تنافسية ودقة عالية",
   button: {
-    label: "Start Reading",
-    href: "#blog",
+    label: "استكشف خدماتنا",
+    href: "#services", // adjust to your actual section ID
   },
-  image: {
-    src: "/images/hero-book.jpg",
-    alt: "Stack of books with a reading lamp",
-  },
+  icons: [
+    {
+      icon: Zap,
+      title: "الإبداع",
+    },
+    {
+      icon: Paintbrush,
+      title: "التصميم",
+    },
+    {
+      icon: Code,
+      title: "البرمجة",
+    },
+  ],
 };
-
-export default heroData;

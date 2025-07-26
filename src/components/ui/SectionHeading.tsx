@@ -1,3 +1,4 @@
+
 interface SectionTitleProps {
   label?: string;
   heading: string;
@@ -9,11 +10,11 @@ interface SectionTitleProps {
 }
 
 const headingSizes = {
-  h1: "text-4xl md:text-6xl lg:text-7xl font-extrabold",
-  h2: "text-3xl md:text-5xl font-bold",
-  h3: "text-2xl md:text-4xl font-semibold",
+  h1: "text-3xl md:text-6xl lg:text-7xl font-extrabold",
+  h2: "text-3xl md:text-4xl font-bold",
+  h3: "text-2xl md:text-3xl font-bold",
   h4: "text-xl md:text-2xl font-semibold",
-  h5: "text-lg font-medium",
+  h5: "text-lg font-semibold",
   h6: "text-base font-medium",
 };
 
@@ -28,10 +29,9 @@ export default function SectionTitle({
 }: SectionTitleProps) {
   const Tag = as;
   const alignmentClass = align === "center" ? "text-center" : "text-left";
-
   const textColor = gradient
-    ? "bg-gradient-to-r from-indigo-700 via-stone-300 to-gray-400 bg-clip-text text-transparent"
-    : "text-gray-800 dark:text-white";
+    ? "bg-gradient-to-r from-purple-800 via-white to-gray-400 bg-clip-text text-transparent"
+    : "text-color";
 
   const renderHeading = () => {
     if (!highlight || !heading.includes(highlight)) {
@@ -45,8 +45,8 @@ export default function SectionTitle({
         <span
           className={
             gradient
-              ? "text-transparent bg-gradient-to-r from-indigo-400 via-stone-200 to-gray-400 bg-clip-text"
-              : "text-indigo-600 dark:text-indigo-400"
+              ? "text-transparent bg-gradient-to-r from-purple-400 via-white to-gray-300 bg-clip-text"
+              : "text-primary"
           }
         >
           {highlight}
@@ -57,23 +57,22 @@ export default function SectionTitle({
   };
 
   return (
-    <div className={`mb-10 ${alignmentClass} ${className}`}>
-      {label && (
-        <p className="text-sm text-indigo-500 uppercase tracking-wider mb-2 font-medium">
-          {label}
-        </p>
-      )}
+    <div className={`mb-8 ${alignmentClass} ${className}`}>
 
-      <Tag
-        className={`
-          ${headingSizes[as]}
-          ${textColor}
-          font-serif
-          tracking-tight leading-snug
-        `}
-      >
-        {renderHeading()}
-      </Tag>
+        {label && (
+          <p className="text-sm text-primary uppercase tracking-widest mb-2">
+            {label}
+          </p>
+        )}
+        <Tag
+          className={`
+            ${headingSizes[as]}
+            ${textColor}
+            tracking-wide leading-tight my-4
+          `}
+        >
+          {renderHeading()}
+        </Tag>
     </div>
   );
 }

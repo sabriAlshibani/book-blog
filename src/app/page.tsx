@@ -1,13 +1,15 @@
-import FeaturesSection from "@/components/features/Features";
+import BB from "@/components/BB";
 import HeroBanner from "@/components/HeroBanner";
 import Navbar from "@/components/navbar/Navbar";
+import ServicesSection from "@/components/services/Services";
 
 export default function Home() {
   return (
     <>
-    <Navbar/>
     <HeroBanner/>
-    <FeaturesSection/>
+    <ServicesSection/>
+    <BB/>
+
     </>
   );
 }
