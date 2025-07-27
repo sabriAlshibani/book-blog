@@ -1,20 +1,25 @@
 import { notFound } from "next/navigation";
 import { products } from "@/data/marketData";
-import { Star, ShoppingCart, MessageCircle, ArrowRight, Check } from "lucide-react";
+import {
+  Star,
+  ShoppingCart,
+  MessageCircle,
+  Check,
+  ArrowRight,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/data/types/market";
 import Button from "@/components/ui/Button";
 import SectionTitle from "@/components/ui/SectionHeading";
 
-interface Props {
-  params: { slug: string };
-}
-
-export default function ProductPage({ params }: Props) {
-  const product: Product | undefined = products.find(
-    (p) => p.slug === params.slug
-  );
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const product: Product | undefined = products.find((p) => p.slug === slug);
 
   if (!product) return notFound();
 
@@ -49,7 +54,9 @@ export default function ProductPage({ params }: Props) {
               </span>
             </div>
 
-            <p className="text-gray-600 leading-loose">{product.description}</p>
+            <p className="text-gray-600 leading-loose">
+              {product.description}
+            </p>
 
             {/* Price */}
             <div className="flex items-center gap-4 text-lg font-semibold">
@@ -83,27 +90,32 @@ export default function ProductPage({ params }: Props) {
             </div>
 
             {/* CTA Buttons */}
-         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pt-6">
-  {/* CTA Buttons */}
-  <div className="flex flex-wrap gap-4">
-    <Button className="px-6 py-3 text-base gap-2">
-      <ShoppingCart className="w-5 h-5" />
-      إضافة إلى السلة
-    </Button>
-    <Link href="#contact">
-      <Button variant="secondary" className="px-6 py-3 text-base gap-2">
-        <MessageCircle className="w-5 h-5" />
-        تواصل معنا
-      </Button>
-    </Link>
-  </div>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pt-6">
+              {/* Action Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <Button className="px-6 py-3 text-base gap-2">
+                  <ShoppingCart className="w-5 h-5" />
+                  إضافة إلى السلة
+                </Button>
+                <Link href="#contact">
+                  <Button
+                    variant="secondary"
+                    className="px-6 py-3 text-base gap-2"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    تواصل معنا
+                  </Button>
+                </Link>
+              </div>
 
-  {/* Back Button */}
-  <Link href="/market">
-  <span>رجوع</span>
-  </Link>
-</div>
-
+              {/* Back Button */}
+              <Link href="/market">
+                <Button variant="outline" className="gap-2 text-sm">
+                  <ArrowRight className="w-4 h-4" />
+                  رجوع
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Product Image */}

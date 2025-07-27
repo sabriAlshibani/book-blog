@@ -1,31 +1,52 @@
-"use client";
-
-import { useParams } from "next/navigation";
+import { notFound } from "next/navigation";
+import { blogPosts } from "@/data/blogData/blogHomeData";
 import Image from "next/image";
 import Link from "next/link";
-import { blogPosts } from "@/data/blogData/blogHomeData";
+import { ArrowRight } from "lucide-react";
+import Button from "@/components/ui/Button";
+import SectionTitle from "@/components/ui/SectionHeading";
 
-export default function BlogDetailPage() {
-  const { id } = useParams();
-  const post = blogPosts.find((p) => p.id === id);
+export default async function BlogDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
 
-  if (!post) return <div className="text-center mt-20 text-gray-500">لم يتم العثور على المقال</div>;
+  if (!post) return notFound();
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12 text-right" dir="rtl">
-      <div className="relative w-full h-64 rounded-lg overflow-hidden mb-6">
-        <Image src={post.image} alt={post.title} fill className="object-cover" />
+    <section className="max-w-3xl mx-auto px-4 py-12 text-right" dir="rtl">
+      <div className="flex justify-start mb-6">
+        <Link href="/blog">
+          <Button variant="outline" className="gap-2 text-sm">
+            <ArrowRight className="w-4 h-4" />
+            الرجوع للمدونة
+          </Button>
+        </Link>
       </div>
-      <h1 className="text-3xl font-bold text-gray-900 mb-2">{post.title}</h1>
-      <p className="text-sm text-gray-500 mb-4">{post.date} - {post.author}</p>
-      <div className="prose max-w-none prose-p:leading-loose prose-ul:rtl prose-li:mb-2" dir="rtl">
-        {post.content.split("\n").map((line, idx) => (
-          <p key={idx}>{line}</p>
-        ))}
+
+      <SectionTitle heading={post.title} className="mb-6" />
+
+      <div className="text-sm text-gray-500 mb-4">
+        {post.date} · {post.readingTime} دقيقة قراءة · {post.views} مشاهدة
       </div>
-      <div className="mt-10">
-        <Link href="/blog" className="text-purple-600 hover:underline text-sm">← العودة إلى المدونة</Link>
-      </div>
-    </div>
+
+      {post.image && (
+        <div className="relative w-full h-64 md:h-96 mb-6 rounded-xl overflow-hidden">
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover rounded-xl"
+          />
+        </div>
+      )}
+
+      <article className="prose prose-lg prose-slate rtl text-gray-800 max-w-none">
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </article>
+    </section>
   );
 }
