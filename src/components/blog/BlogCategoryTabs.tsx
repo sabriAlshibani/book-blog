@@ -2,8 +2,10 @@
 
 import { blogCategories } from "@/data/blogData/blogHomeData";
 import { useState } from "react";
-
-export default function CategoryTabs({ onSelect }: { onSelect: (id: string) => void }) {
+interface categoryProps {
+  onSelect: (id: string) => void
+}
+export default function CategoryTabs({ onSelect }: categoryProps) {
   const [active, setActive] = useState("all");
 
   return (

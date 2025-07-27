@@ -1,10 +1,11 @@
+import { Code, Layers, Megaphone, Palette } from "lucide-react";
 import { BlogCategory, BlogPost } from "../types/blog";
 
 export const blogCategories: BlogCategory[] = [
-  { id: "all", label: "الكل" },
-  { id: "code", label: "البرمجة" },
-  { id: "design", label: "التصميم" },
-  { id: "marketing", label: "التسويق" },
+  { id: "all", label: "الكل", icon: Layers },
+  { id: "code", label: "البرمجة", icon: Code },
+  { id: "design", label: "التصميم", icon: Palette },
+  { id: "marketing", label: "التسويق", icon: Megaphone },
 ];
 
 export const blogPosts: BlogPost[] = [

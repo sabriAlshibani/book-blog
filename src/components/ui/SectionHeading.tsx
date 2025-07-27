@@ -1,3 +1,6 @@
+"use client";
+
+import React from "react";
 
 interface SectionTitleProps {
   label?: string;
@@ -6,7 +9,6 @@ interface SectionTitleProps {
   align?: "left" | "center";
   className?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  gradient?: boolean;
 }
 
 const headingSizes = {
@@ -22,16 +24,12 @@ export default function SectionTitle({
   label,
   heading,
   highlight,
-  align = "left",
+  align = "center",
   className = "",
   as = "h2",
-  gradient = false,
 }: SectionTitleProps) {
   const Tag = as;
   const alignmentClass = align === "center" ? "text-center" : "text-left";
-  const textColor = gradient
-    ? "bg-gradient-to-r from-purple-800 via-white to-gray-400 bg-clip-text text-transparent"
-    : "text-color";
 
   const renderHeading = () => {
     if (!highlight || !heading.includes(highlight)) {
@@ -42,15 +40,7 @@ export default function SectionTitle({
     return (
       <>
         {before}
-        <span
-          className={
-            gradient
-              ? "text-transparent bg-gradient-to-r from-purple-400 via-white to-gray-300 bg-clip-text"
-              : "text-primary"
-          }
-        >
-          {highlight}
-        </span>
+        <span className="text-[#5b3df0] font-extrabold">{highlight}</span>
         {after}
       </>
     );
@@ -58,21 +48,16 @@ export default function SectionTitle({
 
   return (
     <div className={`mb-8 ${alignmentClass} ${className}`}>
-
-        {label && (
-          <p className="text-sm text-primary uppercase tracking-widest mb-2">
-            {label}
-          </p>
-        )}
-        <Tag
-          className={`
-            ${headingSizes[as]}
-            ${textColor}
-            tracking-wide leading-tight my-4
-          `}
-        >
-          {renderHeading()}
-        </Tag>
+      {label && (
+        <div className="inline-block px-3 py-1 mb-2 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">
+          {label}
+        </div>
+      )}
+      <Tag
+        className={`text-3xl md:text-5xl font-extrabold text-[#1d1d1f] leading-tight tracking-tight`}
+      >
+        {renderHeading()}
+      </Tag>
     </div>
   );
 }

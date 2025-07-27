@@ -14,7 +14,11 @@ export interface BlogPost {
   categoryId: string;
 }
 
+import { LucideIcon } from "lucide-react";
+
 export interface BlogCategory {
   id: string;
   label: string;
+  icon: LucideIcon;
 }
+

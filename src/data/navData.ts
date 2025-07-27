@@ -8,8 +8,8 @@ const navData: NavData = {
     alt: "BookBlog Logo",
   },
   navMenu: [
-    { href: "#home", label: "الرئيسية",icon:Home },
-    { href: "#books", label: "المتجر",icon:ShoppingCart },
+    { href: "./", label: "الرئيسية",icon:Home },
+    { href: "./market", label: "المتجر",icon:ShoppingCart },
     { href: "./blog", label: "المدونة",icon:Newspaper },
     { href: "#summaries", label: "قوالب جاهزة",icon:LayoutPanelTop },
     { href: "#quotes", label: "الكورسات",icon:Blocks },

@@ -7,12 +7,13 @@ interface NavItemProps {
   href: string;
   label: string;
   icon?:LucideIcon;
+  className?:string;
   onClick?: () => void;
 }
 
-export default function NavItem({ href, label,icon : Icon, onClick }: NavItemProps) {
+export default function NavItem({ href, label,icon : Icon, className, onClick }: NavItemProps) {
   return (
-    <li className="flex items-center justify-center gap-1.5 text-gray-700 hover:text-blue-600  transition">
+    <li className={`flex items-center gap-1.5 text-gray-700 hover:text-blue-600  transition ${className}`}>
     <a
       href={href}
       onClick={onClick}
@@ -20,7 +21,7 @@ export default function NavItem({ href, label,icon : Icon, onClick }: NavItemPro
     >
       {label}
     </a>
-      {Icon && <Icon className="w-5 h-5"/>}
+      {Icon && <Icon className="max-w-5 max-h-5 shrink-0"/>}
 
     </li>
 

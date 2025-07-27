@@ -9,7 +9,7 @@ export default function HeroSection() {
   const { heading, highlight, description, button, icons } = heroData;
 
   return (
-    <section className="relative overflow-hidden text-center py-20 px-4 md:px-10 bg-gradient-to-br from-[#f3f4ff] to-white">
+    <section className="relative min-h-screen overflow-hidden text-center py-30 px-4 md:px-10 bg-gradient-to-br from-[#f3f4ff] to-white">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Heading */}
         <Reveal y={-20}>
