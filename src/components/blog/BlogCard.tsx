@@ -19,7 +19,7 @@ export default function BlogPostCard({ post, view = "grid" }: BlogPostCardProps)
 
   return (
     <Link
-      href={`/blog/${post.id}`}
+      href={`/blog/${post.slug}`}
       className={`group bg-white rounded-xl shadow-md overflow-hidden ${
         isList ? "flex flex-col md:flex-row" : "flex flex-col"
       }`}

@@ -11,7 +11,7 @@ export default async function BlogDetailPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const  slug  = (await params).slug;
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) return notFound();
@@ -45,7 +45,7 @@ export default async function BlogDetailPage({
       )}
 
       <article className="prose prose-lg prose-slate rtl text-gray-800 max-w-none">
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div/>
       </article>
     </section>
   );
