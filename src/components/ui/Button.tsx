@@ -20,29 +20,29 @@ export default function Button({
   const variants = {
     primary: 'bg-gray-900 text-white hover:scale-105 active:scale-95',
     secondary: 'bg-gray-200 text-gray-800 hover:scale-105 active:scale-95',
-    outline: 'border border-gray-200 text-gray-500 hover:scale-105 active:scale-95 rounded-xl'
+    outline: 'border border-gray-200 text-gray-500 hover:scale-105 active:scale-95'
   };
 
   const sizes = {
     sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg'
+    md: 'px-5 py-2.5 text-base',
+    lg: 'px-6 py-3.5 text-lg'
   };
 
-  return (
-    href ?
-      (<a
-        href={href}
-        className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
-      >
-        {children}
-      </a>) :
-      (<button
-        className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
-        onClick={onClick}
-        type="button"
-      >
-        {children}
-      </button>)
+  return href ? (
+    <a
+      href={href}
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+    >
+      {children}
+    </a>
+  ) : (
+    <button
+      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+      onClick={onClick}
+      type="button"
+    >
+      {children}
+    </button>
   );
 }

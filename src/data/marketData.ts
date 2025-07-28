@@ -61,14 +61,15 @@ export const products: Product[] = [
     label: "شعار",
     icon: Paintbrush, // ✅ icon as LucideIcon
     slug: "logo-design",
-  categoryId:"div"
-
+    categoryId: "div",
+    content: `احصل على تصميم شعار فريد يعبر عن جوهر علامتك التجارية. نعمل على تقديم ثلاث خيارات إبداعية قابلة للتعديل الكامل بما يناسب ذوقك واحتياجاتك.`,
   },
   {
     id: "2",
     title: "تصميم هوية بصرية كاملة",
     category: "branding",
-    description: "هوية متكاملة تشمل بطاقة العمل، أوراق رسمية، ألوان وخطوط العلامة.",
+    description:
+      "هوية متكاملة تشمل بطاقة العمل، أوراق رسمية، ألوان وخطوط العلامة.",
     image: "/images/b-2.jpg",
     price: 650,
     oldPrice: 900,
@@ -80,7 +81,8 @@ export const products: Product[] = [
     label: "هوية",
     icon: BadgeCheck,
     slug: "full-branding",
-    categoryId: "design"
+    categoryId: "design",
+    content: `نمنح علامتك هوية بصرية متكاملة تتضمن الشعار، بطاقة العمل، الملفات الرسمية، مع توجيهات استخدام للهوية بطريقة احترافية.`,
   },
   {
     id: "3",
@@ -95,13 +97,15 @@ export const products: Product[] = [
     label: "موقع",
     icon: Globe,
     slug: "promo-website",
-    categoryId: "education"
+    categoryId: "education",
+    content: `موقع تعريفي سريع الاستجابة ومتوافق مع محركات البحث، مصمم ليعكس نشاطك التجاري أو الشخصي بشكل احترافي وسلس.`,
   },
   {
     id: "4",
     title: "حملة إعلانات سوشيال ميديا",
     category: "marketing",
-    description: "إعداد وتشغيل حملة فعالة على فيسبوك وإنستغرام لتحقيق أهدافك التسويقية.",
+    description:
+      "إعداد وتشغيل حملة فعالة على فيسبوك وإنستغرام لتحقيق أهدافك التسويقية.",
     image: "/images/b-4.jpg",
     price: 500,
     rating: 4.6,
@@ -110,7 +114,8 @@ export const products: Product[] = [
     label: "إعلانات",
     icon: Megaphone,
     slug: "social-media-ads",
-    categoryId: "ecommerce"
+    categoryId: "ecommerce",
+    content: `ندير لك حملة تسويقية فعالة وموجهة على منصات التواصل الاجتماعي، بدءًا من تصميم الإعلانات حتى تحليل النتائج لتحقيق أهدافك.`,
   },
   {
     id: "5",
@@ -125,7 +130,8 @@ export const products: Product[] = [
     label: "محتوى",
     icon: FileText,
     slug: "marketing-copywriting",
-    categoryId : "ecommerce"
+    categoryId: "ecommerce",
+    content: `كتابة نصوص تسويقية مميزة لرفع نسب التحويلات، تشمل صفحات الهبوط، إعلانات سوشيال، ونصوص المبيعات بطريقة إبداعية.`,
   },
   {
     id: "6",
@@ -142,7 +148,8 @@ export const products: Product[] = [
     label: "متجر",
     icon: ShoppingCart,
     slug: "ecommerce-store",
-    categoryId : "dev"
+    categoryId: "dev",
+    content: `نصمم ونطور متجر إلكتروني متكامل مع بوابات دفع، لوحة تحكم، وإمكانية إدارة المنتجات بسهولة لتوسيع تجارتك عبر الإنترنت.`,
   },
 ];
 // data/marketData.ts
@@ -167,11 +174,7 @@ export const marketItems: MarketItem[] = [
     title: "تصميم مواقع إلكترونية",
     rating: 4.8,
     mainImage: "/images/b-1.jpg",
-    gallery: [
-      "/images/b-1.jpg",
-      "/images/b-2.jpg",
-      "/images/b-3.jpg",
-    ],
+    gallery: ["/images/b-1.jpg", "/images/b-2.jpg", "/images/b-3.jpg"],
     views: 120,
     date: "2025-07-28",
     readingTime: 3,
@@ -183,10 +186,7 @@ export const marketItems: MarketItem[] = [
     title: "تحسين محركات البحث SEO",
     rating: 4.5,
     mainImage: "/images/b-2.jpg",
-    gallery: [
-      "/images/b-2.jpg",
-      "/images/b-4.jpg",
-    ],
+    gallery: ["/images/b-2.jpg", "/images/b-4.jpg"],
     views: 95,
     date: "2025-07-28",
     readingTime: 2,

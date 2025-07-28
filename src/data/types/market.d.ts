@@ -18,6 +18,7 @@ export interface Product {
   badge?: string;
   specs?: string[]; // optional specs list
   categoryId?:string;
+  content?:string;
 }
 
 export interface MarketHero {

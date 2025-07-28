@@ -6,6 +6,7 @@ import { Categories } from "@/components/ui/Categories";
 import { marketCategories, products } from "@/data/marketData";
 import { List, LayoutGrid } from "lucide-react";
 import HeroPage from "@/components/ui/HeroPages";
+import Reveal from "@/components/ui/Reval";
 
 export default function MarketPage() {
   const [filter, setFilter] = useState("all");
@@ -33,31 +34,35 @@ export default function MarketPage() {
       <section id="market" className="py-16 px-4 md:px-8 bg-[#f8f9ff]">
         <div className="max-w-6xl mx-auto space-y-10">
           {/* 🟦 Category Tabs */}
-          <Categories Categories={marketCategories} onSelect={setFilter} />
+          <Reveal y={30} delay={0.1}>
+            <Categories Categories={marketCategories} onSelect={setFilter} />
+          </Reveal>
 
           {/* 🔁 View Toggle */}
-          <div className="flex justify-end items-center gap-2">
-            <button
-              onClick={() => setView("grid")}
-              className={`p-2 rounded-md border ${
-                view === "grid"
-                  ? "bg-purple-600 text-white border-purple-600"
-                  : "bg-white text-gray-600 hover:bg-blue-100"
-              }`}
-            >
-              <LayoutGrid size={18} />
-            </button>
-            <button
-              onClick={() => setView("list")}
-              className={`p-2 rounded-md border ${
-                view === "list"
-                  ? "bg-purple-600 text-white border-purple-600"
-                  : "bg-white text-gray-600 hover:bg-blue-100"
-              }`}
-            >
-              <List size={18} />
-            </button>
-          </div>
+          <Reveal y={20} delay={0.2}>
+            <div className="flex justify-end items-center gap-2">
+              <button
+                onClick={() => setView("grid")}
+                className={`p-2 rounded-md border ${
+                  view === "grid"
+                    ? "bg-purple-600 text-white border-purple-600"
+                    : "bg-white text-gray-600 hover:bg-blue-100"
+                }`}
+              >
+                <LayoutGrid size={18} />
+              </button>
+              <button
+                onClick={() => setView("list")}
+                className={`p-2 rounded-md border ${
+                  view === "list"
+                    ? "bg-purple-600 text-white border-purple-600"
+                    : "bg-white text-gray-600 hover:bg-blue-100"
+                }`}
+              >
+                <List size={18} />
+              </button>
+            </div>
+          </Reveal>
 
           {/* 🟨 Product Layout */}
           <div
@@ -68,11 +73,17 @@ export default function MarketPage() {
             }`}
           >
             {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} view={view} />
+              filteredProducts.map((product, index) => (
+                <Reveal key={product.id} y={30} delay={index * 0.05}>
+                  <ProductCard product={product} view={view} />
+                </Reveal>
               ))
             ) : (
-              <p className="text-center text-gray-500 col-span-full">لا توجد منتجات مطابقة.</p>
+              <Reveal y={20} delay={0.1}>
+                <p className="text-center text-gray-500 col-span-full">
+                  لا توجد منتجات مطابقة.
+                </p>
+              </Reveal>
             )}
           </div>
         </div>
