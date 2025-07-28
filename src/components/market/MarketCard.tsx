@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/data/types/market";
+import { useState } from "react";
+import { Heart } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +13,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product, view = "grid" }: ProductCardProps) {
   const isList = view === "list";
+  const [liked, setLiked] = useState(false);
 
   return (
     <Link
@@ -30,7 +35,7 @@ export function ProductCard({ product, view = "grid" }: ProductCardProps) {
           className="object-cover rounded-t-2xl md:rounded-none md:rounded-r-2xl group-hover:scale-105 transition"
         />
         {product.badge && (
-          <span className="absolute top-2 right-2 bg-blue-600 text-white text-xs px-3 py-1 rounded-full">
+          <span className="absolute top-2 right-2 bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow">
             {product.badge}
           </span>
         )}
@@ -44,7 +49,8 @@ export function ProductCard({ product, view = "grid" }: ProductCardProps) {
           </p>
         </div>
 
-        <div className="flex items-center justify-between mt-2 flex-wrap gap-y-2">
+        <div className="flex items-center justify-between mt-4 flex-wrap gap-y-2">
+          {/* 💰 Price */}
           <div className="text-blue-700 font-semibold text-lg">
             {product.price.toFixed(2)} رس
             {product.oldPrice && (
@@ -53,8 +59,27 @@ export function ProductCard({ product, view = "grid" }: ProductCardProps) {
               </span>
             )}
           </div>
-          <div className="text-sm text-yellow-500">
+
+          {/* ⭐ Rating + ❤️ Like */}
+          <div className="flex items-center gap-3 text-sm text-yellow-500">
             ⭐ {product.rating} ({product.reviewsCount})
+
+            {/* ❤️ Like Button */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault(); // prevent navigation on card click
+                setLiked((prev) => !prev);
+              }}
+              aria-label="like"
+            >
+              <Heart
+                size={18}
+                className={`transition ${
+                  liked ? "fill-red-500 text-red-500" : "text-gray-400"
+                }`}
+              />
+            </button>
           </div>
         </div>
       </div>

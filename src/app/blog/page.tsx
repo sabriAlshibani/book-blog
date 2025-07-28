@@ -4,7 +4,6 @@ import BlogPostCard from "@/components/blog/BlogCard";
 import { Categories } from "@/components/ui/Categories";
 import HeroPage from "@/components/ui/HeroPages";
 import { blogCategories, blogPosts } from "@/data/blogData/blogHomeData";
-import { section } from "framer-motion/client";
 import { LayoutGrid, List } from "lucide-react";
 import { useState } from "react";
 
@@ -24,7 +23,7 @@ export default function BlogPage() {
   });
 
   return (
-    <div className="flex flex-col space-y-7">
+    <div className="flex flex-col space-y-10">
       <HeroPage
         heading="مدونة شفرة وهوية"
         highlight="شفرة وهوية"
@@ -32,50 +31,64 @@ export default function BlogPage() {
         placeholder="ابحث في المقالات..."
         onSearch={(val) => setSearchTerm(val)}
       />
-            <section id="market" className="py-16 px-4 md:px-8 bg-[#f8f9ff]">
 
+      <section id="blog-section" className="bg-[#f9fafc] py-16 px-4 sm:px-6 lg:px-8">
+        {/* Category Filter */}
+        <div className="max-w-7xl mx-auto">
+          <Categories Categories={blogCategories} onSelect={setFilter} />
+        </div>
 
-      <Categories Categories={blogCategories} onSelect={setFilter} />
+        {/* View Toggle & Posts */}
+        <div className="max-w-7xl mx-auto mt-8 space-y-8">
+          {/* View Toggle */}
+          <div className="flex justify-between items-center">
+            <h2 className="text-lg font-semibold text-gray-700">النتائج: {filteredPosts.length}</h2>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setView("grid")}
+                aria-label="Grid view"
+                className={`p-2 rounded-md border transition ${
+                  view === "grid"
+                    ? "bg-purple-600 text-white border-purple-600"
+                    : "bg-white text-gray-600 hover:bg-purple-100"
+                }`}
+              >
+                <LayoutGrid size={18} />
+              </button>
+              <button
+                onClick={() => setView("list")}
+                aria-label="List view"
+                className={`p-2 rounded-md border transition ${
+                  view === "list"
+                    ? "bg-purple-600 text-white border-purple-600"
+                    : "bg-white text-gray-600 hover:bg-purple-100"
+                }`}
+              >
+                <List size={18} />
+              </button>
+            </div>
+          </div>
 
-      <div className="max-w-6xl mx-auto px-4 space-y-6">
-        {/* View Toggle */}
-        <div className="flex justify-end items-center gap-2">
-          <button
-            onClick={() => setView("grid")}
-            className={`p-2 rounded-md border ${
+          {/* Blog Posts */}
+          <div
+            className={`${
               view === "grid"
-                ? "bg-purple-600 text-white border-purple-600"
-                : "bg-white text-gray-600 hover:bg-blue-100"
+                ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                : "flex flex-col gap-6"
             }`}
           >
-            <LayoutGrid size={18} />
-          </button>
-          <button
-            onClick={() => setView("list")}
-            className={`p-2 rounded-md border ${
-              view === "list"
-                ? "bg-purple-600 text-white border-purple-600"
-                : "bg-white text-gray-600 hover:bg-blue-100"
-            }`}
-          >
-            <List size={18} />
-          </button>
+            {filteredPosts.length > 0 ? (
+              filteredPosts.map((post) => (
+                <BlogPostCard key={post.id} post={post} view={view} />
+              ))
+            ) : (
+              <p className="text-center text-gray-500 py-12 col-span-full">
+                لا توجد نتائج تطابق بحثك.
+              </p>
+            )}
+          </div>
         </div>
-
-        {/* Blog Posts */}
-        <div
-          className={`${
-            view === "grid"
-              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-              : "flex flex-col gap-6"
-          }`}
-        >
-          {filteredPosts.map((post) => (
-            <BlogPostCard key={post.id} post={post} view={view}/>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 }

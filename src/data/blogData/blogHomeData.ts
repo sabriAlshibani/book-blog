@@ -13,6 +13,7 @@ export const blogPosts: BlogPost[] = [
     id: "1",
     slug: "modern-web-practices",
     title: "أفضل الممارسات في تطوير مواقع الويب",
+    highlight:"الممارسات",
     excerpt: "اكتشف التقنيات والأساليب الحديثة لتحسين أداء وتجربة المستخدم.",
     content: `
 ## مقدمة
@@ -42,11 +43,14 @@ export const blogPosts: BlogPost[] = [
     comments: 4,
     category: "البرمجة",
     categoryId: "code",
+    stars:4,
+    like:60
   },
   {
     id: "2",
     slug: "ui-ux-trends-2025",
     title: "اتجاهات تصميم واجهات المستخدم ٢٠٢٥",
+    highlight:"واجهات",
     excerpt: "تعرف على أحدث التوجهات في عالم التصميم التي ستغير طريقة تفاعل المستخدمين مع المنتجات الرقمية.",
     content: `
 ## مقدمة
@@ -74,11 +78,14 @@ export const blogPosts: BlogPost[] = [
     comments: 2,
     category: "التصميم",
     categoryId: "design",
+        stars:3,
+    like:80
   },
   {
     id: "3",
     slug: "ai-marketing-strategies",
     title: "كيف يستخدم الذكاء الاصطناعي في التسويق الحديث؟",
+    highlight:"الذكاء الاصطناعي",
     excerpt: "نناقش أهم الطرق التي أحدث بها الذكاء الاصطناعي ثورة في عالم التسويق الرقمي.",
     content: `
 ## المقدمة
@@ -106,11 +113,14 @@ export const blogPosts: BlogPost[] = [
     comments: 6,
     category: "التسويق",
     categoryId: "marketing",
+        stars:5,
+    like:600
   },
   {
   id: "4",
   slug: "frontend-vs-backend",
   title: "الفرق بين تطوير الواجهة الأمامية والخلفية",
+  highlight:"الواجهة",
   excerpt: "ما هو الفرق بين واجهة المستخدم والتعامل مع البيانات؟ تعرف على الفرق بين الفرونت إند والبَاك إند.",
   content: `
 ## مقدمة
@@ -141,11 +151,14 @@ export const blogPosts: BlogPost[] = [
   comments: 3,
   category: "البرمجة",
   categoryId: "code",
+      stars:5,
+    like:1000
 },
 {
   id: "5",
   slug: "color-psychology-in-design",
   title: "علم نفس الألوان في التصميم",
+  highlight: " نفس الألوان",
   excerpt: "كيف تؤثر الألوان على مشاعر المستخدم؟ تعرف على استخدام الألوان في التصميم الفعال.",
   content: `
 ## مقدمة
@@ -173,11 +186,14 @@ export const blogPosts: BlogPost[] = [
   comments: 1,
   category: "التصميم",
   categoryId: "design",
+      stars:3,
+    like:80
 },
 {
   id: "6",
   slug: "future-of-digital-marketing",
   title: "مستقبل التسويق الرقمي: إلى أين؟",
+  highlight: "التسويق الرقمي",
   excerpt: "مع تقدم التكنولوجيا، كيف سيتطور التسويق الرقمي خلال السنوات القادمة؟",
   content: `
 ## مقدمة
@@ -202,6 +218,8 @@ export const blogPosts: BlogPost[] = [
   comments: 2,
   category: "التسويق",
   categoryId: "marketing",
+      stars:4,
+    like:200
 },
 
 ];

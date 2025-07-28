@@ -2,6 +2,7 @@ export interface BlogPost {
   id: string;
   slug: string;
   title: string;
+  highlight?:string;
   excerpt: string;
   content: string;
   image: string;
@@ -12,6 +13,8 @@ export interface BlogPost {
   comments: number;
   category: string;
   categoryId: string;
+  stars:number;
+  like?:number;
 }
 
 import { LucideIcon } from "lucide-react";

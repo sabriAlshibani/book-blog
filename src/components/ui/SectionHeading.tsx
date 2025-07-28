@@ -6,7 +6,7 @@ interface SectionTitleProps {
   label?: string;
   heading: string;
   highlight?: string;
-  align?: "left" | "center";
+  align?: "right" | "center";
   className?: string;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
@@ -29,7 +29,7 @@ export default function SectionTitle({
   as = "h2",
 }: SectionTitleProps) {
   const Tag = as;
-  const alignmentClass = align === "center" ? "text-center" : "text-left";
+  const alignmentClass = align === "center" ? "text-center" : "text-right";
 
   const renderHeading = () => {
     if (!highlight || !heading.includes(highlight)) {
@@ -54,7 +54,7 @@ export default function SectionTitle({
         </div>
       )}
       <Tag
-        className={`text-3xl md:text-5xl font-extrabold text-[#1d1d1f] leading-tight tracking-tight`}
+        className={`${headingSizes[as]} text-[#1d1d1f] leading-tight tracking-tight`}
       >
         {renderHeading()}
       </Tag>

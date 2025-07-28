@@ -15,12 +15,12 @@ export default function Button({
   className = '',
   onClick
 }: ButtonProps) {
-  const baseStyles = 'rounded-full font-medium transition-all duration-300 inline-flex items-center justify-center';
+  const baseStyles = 'rounded-2xl font-medium transition-all duration-300 inline-flex items-center justify-center';
 
   const variants = {
     primary: 'bg-gray-900 text-white hover:scale-105 active:scale-95',
     secondary: 'bg-gray-200 text-gray-800 hover:scale-105 active:scale-95',
-    outline: 'border-2 border-blue-600 text-blue-600 hover:scale-105 active:scale-95'
+    outline: 'border border-gray-200 text-gray-500 hover:scale-105 active:scale-95 rounded-xl'
   };
 
   const sizes = {

@@ -145,3 +145,52 @@ export const products: Product[] = [
     categoryId : "dev"
   },
 ];
+// data/marketData.ts
+
+export interface MarketItem {
+  id: number;
+  slug: string;
+  title: string;
+  rating: number;
+  mainImage: string;
+  gallery: string[];
+  views: number;
+  date: string;
+  readingTime: number;
+  content: string;
+}
+
+export const marketItems: MarketItem[] = [
+  {
+    id: 1,
+    slug: "design-website",
+    title: "تصميم مواقع إلكترونية",
+    rating: 4.8,
+    mainImage: "/images/b-1.jpg",
+    gallery: [
+      "/images/b-1.jpg",
+      "/images/b-2.jpg",
+      "/images/b-3.jpg",
+    ],
+    views: 120,
+    date: "2025-07-28",
+    readingTime: 3,
+    content: `نحن نقدم خدمة تصميم مواقع إلكترونية احترافية باستخدام أحدث التقنيات مثل Next.js و Tailwind CSS لضمان تجربة مستخدم سلسة ومتجاوبة على جميع الأجهزة.`,
+  },
+  {
+    id: 2,
+    slug: "seo-marketing",
+    title: "تحسين محركات البحث SEO",
+    rating: 4.5,
+    mainImage: "/images/b-2.jpg",
+    gallery: [
+      "/images/b-2.jpg",
+      "/images/b-4.jpg",
+    ],
+    views: 95,
+    date: "2025-07-28",
+    readingTime: 2,
+    content: `نساعدك على رفع ترتيب موقعك في نتائج البحث من خلال تحليل الكلمات المفتاحية، تحسين بنية الموقع، وبناء روابط خلفية فعالة.`,
+  },
+  // يمكنك إضافة المزيد بنفس الشكل
+];
